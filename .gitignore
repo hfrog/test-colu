@@ -1,0 +1,97 @@
+*.sublime-project
+*.sublime-workspace
+todo.txt
+reset-files.bash
+
+*.tar.gz
+
+*.exe
+
+# autoreconf
+Makefile.in
+aclocal.m4
+autom4te.cache/
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/ltmain.sh
+build-aux/m4/libtool.m4
+build-aux/m4/lt~obsolete.m4
+build-aux/m4/ltoptions.m4
+build-aux/m4/ltsugar.m4
+build-aux/m4/ltversion.m4
+build-aux/missing
+build-aux/compile
+build-aux/test-driver
+config.log
+config.status
+configure
+libtool
+
+.deps
+.dirstamp
+.libs
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.pyc
+*.o
+*.o-*
+*.patch
+*.a
+*.pb.cc
+*.pb.h
+
+*.log
+*.trs
+*.dmg
+
+*.json.h
+*.raw.h
+
+#libtool object files
+*.lo
+*.la
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+
+# Unit-tests
+Makefile.test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+#lcov
+*.gcno
+/*.info
+total.coverage/
+coverage_percent.txt
+
+#build tests
+linux-coverage-build
+linux-build
+win32-build
+qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/tests-config.sh
+qa/pull-tester/cache/*
+qa/pull-tester/test.*/*
+
+!src/leveldb*/Makefile
+
+.cproject
+.project
+/doc/doxygen/
+RCS/
+/node_modules/

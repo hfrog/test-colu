@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  if file
+    p Received image: #{file}
+    br/
+    img(src='/show')
+  else
+    p No files selected
+  br/
+  a(href='/') home
+
+
+block sidebar
+  .widget
+    h1 Widget
+    p
+      | Sed auctor neque eu tellus rhoncus ut
+      | eleifend nibh porttitor. Ut in nulla enim.
+    p
+      | Vivamus hendrerit arcu sed erat molestie
+      | vehicula.
