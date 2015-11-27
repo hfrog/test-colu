@@ -15,6 +15,7 @@ var nib = require("nib");
 var routes = require('./routes/index');
 var upload = require('./routes/upload');
 var show = require('./routes/show');
+var send = require('./routes/send');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use(stylus.middleware(
 app.use('/', routes);
 app.use('/upload', upload);
 app.use('/show', show);
+app.use('/send', send);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

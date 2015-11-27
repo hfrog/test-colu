@@ -7,4 +7,16 @@ block content
     input(type="file", name="upload")
     br/
     input(type="submit", value="upload file")
+  p
 
+  form(action="/send", enctype="application/x-www-form-urlencoded", method="post")
+    p assetId
+    input(type="text", name="assetId")
+    br/
+    p qty
+    input(type="text", name="qty")
+    br/
+    p toAddr
+    input(type="text", name="toAddr")
+    br/
+    input(type="submit", value="Send asset")
