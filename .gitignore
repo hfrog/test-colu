@@ -95,3 +95,4 @@ qa/pull-tester/test.*/*
 /doc/doxygen/
 RCS/
 /node_modules/
+public/stylesheets/*.css
