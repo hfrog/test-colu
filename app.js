@@ -1,6 +1,3 @@
-//
-// $Id: app.js,v 1.3 2015/11/25 14:40:49 ec2-user Exp ec2-user $
-//
 
 var express = require('express');
 var path = require('path');
