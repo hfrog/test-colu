@@ -3,20 +3,32 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(action="/upload", enctype="multipart/form-data", method="post")
-    input(type="file", name="upload")
-    br/
-    input(type="submit", value="upload file")
+  //-
+      form(action="/upload", enctype="multipart/form-data", method="post")
+        input(type="file", name="upload")
+        br/
+        input(type="submit", value="upload file")
   p
 
+  p apiKey #{apiKey}
+  p privateSeed #{privateSeed}
+
   form(action="/send", enctype="application/x-www-form-urlencoded", method="post")
-    p assetId
-    input(type="text", name="assetId")
-    br/
-    p qty
-    input(type="text", name="qty")
-    br/
-    p toAddr
-    input(type="text", name="toAddr")
+    table(border='0')
+      tr
+        td
+          div() assetId
+        td
+          input(type="text", name="assetId")
+      tr
+        td
+          div() qty
+        td
+          input(type="text", name="qty")
+      tr
+        td
+          div() toAddr
+        td
+          input(type="text", name="toAddr")
     br/
     input(type="submit", value="Send asset")

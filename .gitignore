@@ -96,3 +96,5 @@ qa/pull-tester/test.*/*
 RCS/
 /node_modules/
 public/stylesheets/*.css
+config/*/*.js
+
