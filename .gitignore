@@ -95,6 +95,7 @@ qa/pull-tester/test.*/*
 /doc/doxygen/
 RCS/
 /node_modules/
-public/stylesheets/*.css
-config/*/*.js
+/public/stylesheets/*.css
+/config/dev/*.js
+/config/prod/*.js
 
