@@ -6,12 +6,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cons = require('consolidate');
-var stylus = require("stylus");
-var nib = require("nib");
+var stylus = require('stylus');
+var nib = require('nib');
+var config = require('app-config');
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/colu');
+var Colu = require('colu');
 
 var routes = require('./routes/index');
-var upload = require('./routes/upload');
-var show = require('./routes/show');
+var issue = require('./routes/issue');
 var send = require('./routes/send');
 
 var app = express();
@@ -42,9 +46,23 @@ app.use(stylus.middleware(
     }
 ));
 
+// Colu init
+var settings = {
+    network:     config.colu.network,
+    apiKey:      config.colu.apiKey,
+    privateSeed: config.colu.privateSeed
+};
+var colu = new Colu(settings);
+
+// Make globals accessible to our router
+app.use(function(req,res,next) {
+    req.db = db;
+    req.colu = colu;
+    next();
+});
+
 app.use('/', routes);
-app.use('/upload', upload);
-app.use('/show', show);
+app.use('/issue', issue);
 app.use('/send', send);
 
 // catch 404 and forward to error handler
