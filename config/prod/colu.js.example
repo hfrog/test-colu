@@ -1,0 +1,7 @@
+
+module.exports = {
+    network: 'mainnet',
+    apiKey: 'xxx',
+    privateSeed: 'yyy'
+}
+

@@ -98,4 +98,5 @@ RCS/
 /public/stylesheets/*.css
 /config/dev/*.js
 /config/prod/*.js
+properties.conf
 
