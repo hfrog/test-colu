@@ -1,0 +1,15 @@
+//- vim: sw=2
+
+extends layout
+
+block content
+  h1= title
+  h2 Issuing assets
+  p name: #{name}
+  p assetId: #{assetId}
+  p amount: #{amount}
+  p issueAddr: #{issueAddr}
+  p result: #{result}
+  br/
+  a(href='/') home
+
