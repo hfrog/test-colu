@@ -1,42 +1,59 @@
+// vim: sw=4
 
-var Colu = require('colu');
 var express = require('express');
 var router = express.Router();
 
 /* Issue asset */
 router.post('/', function(req, res, next) {
 
-  var settings = {
-    network:     req.config.colu.network,
-    apiKey:      req.config.colu.apiKey,
-    privateSeed: req.config.colu.privateSeed
-  };
-  var colu = new Colu(settings);
+    var name =   req.body.name;
+    var amount = req.body.amount;
 
-  var name =   hreq.body.name;
-  var amount = req.body.amount;
+    var asset = {
+        amount: amount,
+        metadata: {
+            assetName: name,
+        },
+        reissueable: false,
+        divisibility: 0
+    };
 
-  var send = {
-    from: [fromAddress],
-    to: [{
-        phoneNumber: toAddr,
-        assetId: assetId,
-        amount: qty
-    }],
-    metadata: {
-        'description': 'Balloons for free'
-    }
-  };
+    req.colu.on('connect', function () {
+        req.colu.issueAsset(asset, function (err, body) {
+            if (err) {
+                console.error(err);
+                res.render('error', {
+                    message: err.message,
+                    error: {}
+                });
+            } else {
 
-  colu.on('connect', function () {
-      colu.sendAsset(send, function (err, body) {
-          if (err) return console.error(err);
-//          console.log("Body: ", body);
-          res.render('send', { assetId: assetId, qty: qty, toAddr: toAddr, result: body });
-      })
-  });
+                req.db.get('asset').insert({
+                    assetId: body.assetId,
+                    issueAddress: body.issueAddress
+                }, function (err, doc) {
+                    if (err) {
+                        console.error(err);
+                        res.render('error', {
+                            message: err.message,
+                            error: {}
+                        });
+                    } else {
+                        res.render('issue', {
+                            name:         name,
+                            amount:       amount,
+                            assetId:      body.assetId,
+                            issueAddress: body.issueAddress,
+                            result:       JSON.stringify(body)
+                        });
+                    }
+                });
 
-  colu.init();
+            }
+        });
+    });
+
+    req.colu.init();
 
 });
 
