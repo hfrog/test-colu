@@ -16,7 +16,7 @@ router.post('/', function(req, res, next) {
             console.error(err);
             res.render('error', {
                 message: err.message,
-                error: {}
+                error: err
             });
         } else {
 
@@ -35,13 +35,14 @@ router.post('/', function(req, res, next) {
 //                }
             };
 
-            req.colu.on('connect', function () {
-                req.colu.sendAsset(send, function (err, body) {
+            var colu = new req.colu();
+            colu.on('connect', function () {
+                colu.sendAsset(send, function (err, body) {
                     if (err) {
                         console.error(err);
                         res.render('error', {
                             message: err.message,
-                            error: {}
+                            error: err
                         });
                     } else {
                         res.render('send', {
@@ -53,7 +54,7 @@ router.post('/', function(req, res, next) {
                     }
                 });
             });
-            req.colu.init();
+            colu.init();
 
         }
     });

@@ -8,11 +8,10 @@ var bodyParser = require('body-parser');
 var cons = require('consolidate');
 var stylus = require('stylus');
 var nib = require('nib');
-var config = require('app-config');
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/colu');
-var Colu = require('colu');
+var colu = require('./lib/coluWrapper');
 
 var routes = require('./routes/index');
 var issue = require('./routes/issue');
@@ -45,14 +44,6 @@ app.use(stylus.middleware(
         compile: compile
     }
 ));
-
-// Colu init
-var settings = {
-    network:     config.colu.network,
-    apiKey:      config.colu.apiKey,
-    privateSeed: config.colu.privateSeed
-};
-var colu = new Colu(settings);
 
 // Make globals accessible to our router
 app.use(function(req,res,next) {

@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
             console.error(err);
             res.render('error', {
                 message: err.message,
-                error: {}
+                error: err
             });
         } else {
             res.render('index', {
