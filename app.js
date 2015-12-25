@@ -8,10 +8,8 @@ var bodyParser = require('body-parser');
 var cons = require('consolidate');
 var stylus = require('stylus');
 var nib = require('nib');
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/colu');
 var colu = require('./lib/coluWrapper');
+var db = require('./lib/dbWrapper');
 
 var routes = require('./routes/index');
 var issue = require('./routes/issue');
