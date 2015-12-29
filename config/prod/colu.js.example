@@ -2,6 +2,7 @@
 module.exports = {
     network: 'mainnet',
     apiKey: 'xxx',
-    privateSeed: 'yyy'
+    privateSeed: 'yyy',
+    db: 'localhost:27017/colu',
 }
 

@@ -1,6 +1,7 @@
 
 module.exports = {
     network: 'testnet',
-    privateSeed: 'xxx'
+    privateSeed: 'xxx',
+    db: 'localhost:27017/colu_dev',
 }
 
