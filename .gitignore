@@ -96,7 +96,6 @@ qa/pull-tester/test.*/*
 RCS/
 /node_modules/
 /public/stylesheets/*.css
-/config/dev/*.js
 /config/prod/*.js
 properties.conf
 
