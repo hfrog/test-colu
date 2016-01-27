@@ -1,0 +1,55 @@
+//- vim: sw=2
+
+extends layout
+
+block content
+  h1= QIWI
+  p QIWI #{network}
+  
+  hr/
+  p Asset list
+  #assetList
+    table
+      tr
+        th name
+        th amount
+        th
+      each a, i in assets
+        tr
+          td
+            a(href='#', class='linkassetdata', rel='#{a.assetId}') #{a.name}
+          td #{a.amount}
+          td
+            //- a(href='#', class='linksendasset', rel='#{a.assetId}') send asset
+            a(href='#', onclick="window.open('/asset/send/#{a.assetId}', 'newwindow', 'width=500, height=300'); return false;") send asset
+        tr(id='#{a.assetId}_tr', class='hidden')
+           td(span=3)
+             table
+               thead
+                 th amount
+                 th address
+               tbody(id='#{a.assetId}_tbody')
+        tr(id='#{a.assetId}_send', class='hidden')
+           td(span=3)
+             table
+               thead
+                 th send_amount
+                 th dst_address
+
+  br/
+  hr/
+  p Issue asset
+
+  form(action="/asset/issue", enctype="application/x-www-form-urlencoded", method="post")
+    table
+      tr
+        td name
+        td
+          input(type="text", name="name")
+      tr
+        td amount
+        td
+          input(type="text", name="amount")
+    br/
+    input(type="submit", value="Issue asset")
+

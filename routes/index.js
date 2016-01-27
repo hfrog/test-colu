@@ -1,12 +1,14 @@
 // vim: sw=4
 
 var express = require('express');
+var Settings = require('../lib/libsettings');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    var settings = new Settings;
     var asset = req.db.get('asset');
-    asset.find({},{},function(err,docs) {
+    asset.find({'privateSeed':settings.privateSeed},{},function(err,docs) {
         if (err) {
             console.error(err);
             res.render('error', {
@@ -15,7 +17,8 @@ router.get('/', function(req, res, next) {
             });
         } else {
             res.render('index', {
-                title: 'Express',
+                title: 'QIWI',
+                network: settings.network,
                 assets: docs
             });
         }

@@ -1,6 +1,6 @@
 //- vim: sw=2
 
-extends layout
+//-extends layout
 
 block content
   h1= title
@@ -10,5 +10,5 @@ block content
   p toAddr: #{toAddr}
   p result: #{result}
   br/
-  a(href='/') home
+  a(href='#', onclick="window.close()") close
 

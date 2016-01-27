@@ -1,0 +1,23 @@
+//- vim: sw=2
+
+//-extends layout
+
+block content
+  h1= title
+  h5 Send asset #{name} (Id: #{assetId})
+  form(action="/asset/send", enctype="application/x-www-form-urlencoded", method="post")
+    table
+      tr
+        td(span=2)
+          input(type="hidden", name="assetId", value="#{assetId}")
+      tr
+        td amount
+        td
+          input(type="text", name="qty")
+      tr
+        td toAddr
+        td
+          input(type="text", name="toAddr")
+    br/
+    input(type="submit", value="Send asset")
+

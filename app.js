@@ -12,8 +12,8 @@ var colu = require('./lib/coluWrapper');
 var db = require('./lib/dbWrapper');
 
 var routes = require('./routes/index');
-var issue = require('./routes/issue');
-var send = require('./routes/send');
+var settings = require('./routes/settings');
+var asset = require('./routes/asset');
 
 var app = express();
 
@@ -24,8 +24,7 @@ function compile(str, path) {
 }
 
 // view engine setup
-app.engine('html', cons.jade);
-app.set('view engine', 'html');
+app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 
 // uncomment after placing your favicon in /public
@@ -51,8 +50,8 @@ app.use(function(req,res,next) {
 });
 
 app.use('/', routes);
-app.use('/issue', issue);
-app.use('/send', send);
+app.use('/settings', settings);
+app.use('/asset', asset);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
